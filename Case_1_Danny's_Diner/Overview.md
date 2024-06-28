@@ -38,8 +38,11 @@ Danny has shared with you 3 key datasets for this case study:
 
 - **Sales** : This table contains all sales records detailing the Customer ID, Product ID and the Order time
 - **Menu**  : This table contains a list of all products offered by the diner. it details, the Product Name, ID, and Price 
-- **members** : This table contains details of all customers who have signed up
+- **members** : This table contains details of all customers who have signed up to his loyalty program 
 
+<p align="center">
+  <img src="https://dbdiagram.io/d/Dannys-Diner-608d07e4b29a09603d12edbd?utm_source=dbdiagram_embed&utm_medium=bottom_open" width="500">
+</p>
 
 Click [here](https://8weeksqlchallenge.com/case-study-1/) for data
 
