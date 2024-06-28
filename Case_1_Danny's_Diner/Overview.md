@@ -36,9 +36,9 @@ Danny has provided you with a sample of his overall customer data due to privacy
 Danny has shared with you 3 key datasets for this case study:
 
 
-- sales
-- menu
-- members
+- **Sales** : This table contains all sales records detailing the Customer ID, Product ID and the Order time
+- **Menu**  : This table contains a list of all products offered by the diner. it details, the Product Name, ID, and Price 
+- **members** : This table contains details of all customers who have signed up
 
 
 Click [here](https://8weeksqlchallenge.com/case-study-1/) for data
