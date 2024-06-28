@@ -1,4 +1,4 @@
-
+# Danny’s Diner 
 
 
 
@@ -10,41 +10,36 @@
 
 
 
+## Background 
+
+Danny is a Japanese food enthusiast who, in 2021, opened a restaurant to sell 3 of his favourite Japanese foods: sushi, curry,  and ramen. 
+The restaurant has been collecting data for a few months but, does not know how to make meaning of it, and so, he has contacted us to solve this
 
 
-Danny seriously loves Japanese food so in the beginning of 2021, he decides to embark upon a risky venture and opens up a cute little restaurant that sells his 3 favourite foods: sushi, curry and ramen.
+## Task
+
+Danny wants is interested in us using the data to answer a few questions about his customers. He wants to know their visiting and spending patterns, and the popular menu items.
+He hopes to use the insights to improve his services and create a better experience for his loyalty program
 
 
-Danny’s Diner is in need of your assistance to help the restaurant stay afloat - the restaurant has captured some very basic data from their few months of operation but have no idea how to use their data to help them run the business.
-
-
-
-
-|**Problem Statement**|
-| :---: |
-
-
-Danny wants to use the data to answer a few simple questions about his customers, especially about their visiting patterns, how much money they’ve spent and also which menu items are their favourite. Having this deeper connection with his customers will help him deliver a better and more personalised experience for his loyal customers.
-
-
-He plans on using these insights to help him decide whether he should expand the existing customer loyalty program - additionally he needs help to generate some basic datasets so his team can easily inspect the data without needing to use SQL.
-
-
-Danny has provided you with a sample of his overall customer data due to privacy issues - but he hopes that these examples are enough for you to write fully functioning SQL queries to help him answer his questions!
-
-
-Danny has shared with you 3 key datasets for this case study:
+Danny has shared with you 3 key sample datasets for this case study:
 
 
 - **Sales** : This table contains all sales records detailing the Customer ID, Product ID and the Order time
 - **Menu**  : This table contains a list of all products offered by the diner. it details, the Product Name, ID, and Price 
 - **members** : This table contains details of all customers who have signed up to his loyalty program 
 
+
+Below is an entity relationship diagram showing the relationship between the data provided. 
 <p align="center">
-  <img src="https://dbdiagram.io/d/Dannys-Diner-608d07e4b29a09603d12edbd?utm_source=dbdiagram_embed&utm_medium=bottom_open" width="500">
+  <img src="https://github.com/Jx-jeff/8-Week-SQL-Challenge/blob/6e002ac62ceeb4baa7288b54f3f6b26cc34f3f4f/Images/Screenshot_20240628-114254_Chrome.jpg" width="500">
 </p>
 
-Click [here](https://8weeksqlchallenge.com/case-study-1/) for data
+## [Solutions]()
+
+### Acknowledgements
+Click [here](https://8weeksqlchallenge.com/case-study-1/) to see the case study 
+Please note that all images used are from 8 week SQL Challenge Case 1
 
 
 
