@@ -35,7 +35,7 @@ Below is an entity relationship diagram showing the relationship between the dat
   <img src="https://github.com/Jx-jeff/8-Week-SQL-Challenge/blob/6e002ac62ceeb4baa7288b54f3f6b26cc34f3f4f/Images/Screenshot_20240628-114254_Chrome.jpg" width="500">
 </p>
 
-## [Solutions]()
+## [Solutions](https://github.com/Jx-jeff/8-Week-SQL-Challenge/blob/main/Case_1_Danny's_Diner/Solutions.sql)
 
 ### Acknowledgements
 Click [here](https://8weeksqlchallenge.com/case-study-1/) to see the case study 
