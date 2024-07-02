@@ -13,7 +13,7 @@ Thanks 😊😉
 
 ## Completed Cases
 
-[Week 1]
+[Week 1](https://github.com/Jx-jeff/8-Week-SQL-Challenge/tree/d71e37809267fb2aa40ae9ff2f50128d7fec579d/Case_1_Danny's_Diner)
 
 [Week 2]
 
