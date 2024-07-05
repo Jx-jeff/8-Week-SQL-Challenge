@@ -9,6 +9,7 @@ FROM customer_orders2 co;
 ```
 ![Screenshot 2024-07-04 141122](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/16bdd700-a593-42b9-90f5-32010b82315d)
 
+<br/>
 
 ### 2. How many unique customer orders were made?
 ```sql
@@ -17,6 +18,8 @@ SELECT
 FROM customer_orders2 co;
 ```
 ![Screenshot 2024-07-04 141340](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/45e82524-dbbc-4e04-b279-54517b502d59)
+
+<br/>
 
 ### 3. How many successful orders were delivered by each runner?
 ``` SQL
@@ -28,6 +31,8 @@ WHERE cancellation IS NUll
 GROUP BY 1;
 ```
 ![Screenshot 2024-07-04 141457](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/59f12d17-8534-46a9-8997-c8fb0b230d95)
+
+<br/>
 
 ### 4. How many of each type of pizza was delivered?
 ```SQL
@@ -44,6 +49,8 @@ GROUP BY 1;
 ```
 ![Screenshot 2024-07-04 142618](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/9d19573b-95f6-4d05-961b-21b21ad23c98)
 
+<br/>
+
 ### 5. How many Vegetarian and Meatlovers were ordered by each customer?
 ```SQL
 SELECT
@@ -58,6 +65,7 @@ ORDER BY 1;
 ```
 ![Screenshot 2024-07-04 143246](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/dc9bd961-74b3-47f4-a9c3-14db6926a464)
 
+<br/>
 
 ### 6. What was the maximum number of pizzas delivered in a single order?
 ``` SQL
@@ -76,6 +84,8 @@ SELECT
 FROM pizza_count pc
 ```
 ![Screenshot 2024-07-04 143939](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/f5cbdb2f-540d-44ee-8856-61cfa61c025f)
+
+<br/>
 
 ### 7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
 ``` SQL
@@ -104,6 +114,8 @@ GROUP BY 1;
 ```
 ![Screenshot 2024-07-04 144644](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/130ac70e-9d35-4ab1-b4d3-712551aa7d67)
 
+<br/>
+
 ### 8. How many pizzas were delivered that had both exclusions and extras?
 ``` SQL
 SELECT 
@@ -120,6 +132,7 @@ GROUP BY 1,2;
 ```
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/4498e431-89f6-462f-8c6d-4a67d386345f)
 
+<br/>
 
 ### 9. What was the total volume of pizzas ordered for each hour of the day?
 ``` SQL
@@ -136,6 +149,8 @@ GROUP BY 1
 ```
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/e76f06b2-4398-4213-a15c-e8fa0a8d6fd5)
 
+<br/>
+
 ### 10. What was the volume of orders for each day of the week?
 ``` SQL
 SELECT 
@@ -146,7 +161,11 @@ GROUP BY 1;
 ```
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/9100613b-5559-4b5a-bec4-b2c7ce91e2a5)
 
+<br/>
+
 ## Runner and Customer Experience
+
+<br/>
 
 ### 1. How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)
 ```SQL
@@ -174,6 +193,8 @@ GROUP BY 1;
 ```
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/6a818892-985a-48ce-a39a-b5bb2c0ed974)
 
+<br/>
+
 ### 2. What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pickup the order?
 ```SQL
 SELECT distinct
@@ -190,6 +211,7 @@ group by 1;
 ```
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/d64951d1-c68b-430a-a249-dfdec7c9071b)
 
+<br/>
 
 ### 3. Is there any relationship between the number of pizzas and how long the order takes to prepare?
 ```SQL
@@ -215,6 +237,7 @@ GROUP BY 1;
 
 Yes there seems to be a positive correlation between the number of pizza per order and the production time
 
+<br/>
 
 ### 4. What was the average distance travelled for each customer?
 ```SQL
@@ -238,6 +261,7 @@ GROUP BY 1;
 ```
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/b564dbd4-2c07-4bfc-a287-eb676d2eae19)
 
+<br/>
 
 ### 5. What was the difference between the longest and shortest delivery times for all orders?
 ```sql
@@ -246,6 +270,8 @@ SELECT
 FROM runner_orders2 ro;
 ```
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/22463a5a-78ee-4d97-a19e-d69532a4a5c2)
+
+<br/>
 
 ### 6. What was the average speed for each runner for each delivery and do you notice any trend for these values?
 ```SQL
@@ -272,6 +298,7 @@ GROUP BY 1,2;
 
 Yes as runners get more experienced, the tend to increase in avg speed. And runner 2's 2nd run should be investigated 
 
+<br/>
 
 ### 7. What is the successful delivery percentage for each runner?
 ```SQL
@@ -286,7 +313,11 @@ FROM runner_orders2 ro
 GROUP BY 1;
 ```
 
+<br/>
+
 ## C. Ingredient Optimisation
+
+<br/>
 
 ### 1. What are the standard ingredients for each pizza?
 ```SQL
@@ -320,6 +351,8 @@ GROUP BY 1
 ```
  ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/c086508c-614c-4b36-83fd-6b421fe8af60)
 
+<br/>
+
 ### 2. What was the most commonly added extra?
 ```SQL
 SELECT
@@ -331,7 +364,9 @@ GROUP BY 1
 ```
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/e751fb9c-efa7-46d5-9d86-5dcf0f789906)
 
-Bacon is the most common extra
+```Bacon is the most common extra```
+
+<br/>
 
 ### 3. What was the most common exclusion?
 ```SQL
@@ -344,8 +379,9 @@ GROUP BY 1;
 ```
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/17b3315a-a29a-47d1-a9d9-dc1052ed037d)
 
-Cheese is the most common exclusion
+```Cheese is the most common exclusion```
 
+<br/>
 
 ### 4. Generate an order item for each record in the customers_orders table in the format of one of the following:
 Meat Lovers
@@ -381,12 +417,16 @@ FROM orders_inc_names oic;
 ```
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/4bfe9892-b2be-4a58-868b-924bacf9838b)
 
+<br/>
+
 ### 5.Generate an alphabetically ordered comma separated ingredient list for each pizza order from the customer_orders table and add a 2x in front of any relevant ingredients
 For example: "Meat Lovers: 2xBacon, Beef, ... , Salami"
 
 COMING SOON!
 
 ## Pricing and Ratings
+
+<br/>
 
 ### 1. If a Meat Lovers pizza costs $12 and Vegetarian costs $10 and there were no charges for changes - how much money has Pizza Runner made so far if there are no delivery fees?
 ```SQL
@@ -402,15 +442,17 @@ WHERE ro.cancellation IS NULL;
 ```
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/e7d81e83-e85e-44f3-8ff0-7f4f6bf6a4ab)
 
+<br/>
+
 ### 2. What if there was an additional $1 charge for any pizza extras?
 Add cheese is $1 extra
 ```SQL
 WITH rev_sum AS( 
 	SELECT 
 		1 as total,
-        SUM(CASE 
-				WHEN co.pizza_id = 1 THEN 12 
-                ELSE 10 END
+		SUM(CASE
+			WHEN co.pizza_id = 1 THEN 12
+			ELSE 10 END
 			) as revenue
 	FROM customer_orders2 co
 	LEFT JOIN runner_orders2 ro 
@@ -423,8 +465,8 @@ rev_extra AS(
 	SELECT
 			1 AS total,    
 			SUM( CASE
-					WHEN ex.extra IS NOT NULL THEN 1
-					END) AS extra_revenue
+				WHEN ex.extra IS NOT NULL THEN 1
+				END) AS extra_revenue
 	FROM customer_orders2 co
 	LEFT JOIN extras ex
 		ON ex.new_id = co.new_id
