@@ -52,7 +52,7 @@ Designing and populating a ratings table for customer feedback.
 Integrating ratings with delivery performance data for analysis.
 
 
-## [Solutions](https://github.com/Jx-jeff/8-Week-SQL-Challenge/blob/main/Case_1_Danny's_Diner/Solutions.sql)
+## [Solutions](https://github.com/Jx-jeff/8-Week-SQL-Challenge/blob/main/Case_2%20Pizza%20Runner/Solutions.md)
 
 
 ### Acknowledgements
