@@ -1,10 +1,12 @@
+# SOLUTIONS
+
 ## Pizza Metrics
 
 ### 1. How many pizzas were ordered?
 
 ```SQL
 SELECT 
-  COUNT(co.new_id)
+	COUNT(co.new_id)
 FROM customer_orders2 co;
 ```
 ![Screenshot 2024-07-04 141122](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/16bdd700-a593-42b9-90f5-32010b82315d)
@@ -14,7 +16,7 @@ FROM customer_orders2 co;
 ### 2. How many unique customer orders were made?
 ```sql
 SELECT
-  COUNT(distinct(co.order_id)) AS unique_orders
+	COUNT(distinct(co.order_id)) AS unique_orders
 FROM customer_orders2 co;
 ```
 ![Screenshot 2024-07-04 141340](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/45e82524-dbbc-4e04-b279-54517b502d59)
@@ -24,8 +26,8 @@ FROM customer_orders2 co;
 ### 3. How many successful orders were delivered by each runner?
 ``` SQL
 SELECT
-  ro.runner_id,
-  COUNT(ro.order_id) as successful_del
+	ro.runner_id,
+	COUNT(ro.order_id) as successful_del
 FROM runner_orders2 ro
 WHERE cancellation IS NUll
 GROUP BY 1;
@@ -37,13 +39,13 @@ GROUP BY 1;
 ### 4. How many of each type of pizza was delivered?
 ```SQL
 SELECT
-  pn.pizza_name,
-  COUNT(co.pizza_id) as Number_delivered
+	pn.pizza_name,
+	COUNT(co.pizza_id) as Number_delivered
 FROM runner_orders2 ro
 JOIN customer_orders2 co
-  ON ro.order_id = co.order_id
+	ON ro.order_id = co.order_id
 JOIN pizza_names pn
-  ON co.pizza_id = pn.pizza_id
+	ON co.pizza_id = pn.pizza_id
 WHERE cancellation IS NULL
 GROUP BY 1;
 ```
@@ -54,12 +56,12 @@ GROUP BY 1;
 ### 5. How many Vegetarian and Meatlovers were ordered by each customer?
 ```SQL
 SELECT
-  co.customer_id ,
-  pn.pizza_name,
-  COUNT(co.pizza_id) AS Number_ordered
+	co.customer_id ,
+	pn.pizza_name,
+	COUNT(co.pizza_id) AS Number_ordered
 FROM customer_orders2 co
 JOIN pizza_names pn
-  ON co.pizza_id = pn.pizza_id
+	ON co.pizza_id = pn.pizza_id
 GROUP BY 1,2
 ORDER BY 1;
 ```
@@ -75,12 +77,12 @@ WITH pizza_count AS (
 		COUNT(co.pizza_id) as pizza_count
 	FROM customer_orders2 co
 	JOIN runner_orders2 ro 
-	  ON co.order_id = ro.order_id
+		ON co.order_id = ro.order_id
 	WHERE cancellation IS NULL
 	GROUP BY 1
                         )
 SELECT 
-    MAX(pc.pizza_count) as Largerst_order
+	MAX(pc.pizza_count) as Largerst_order
 FROM pizza_count pc
 ```
 ![Screenshot 2024-07-04 143939](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/f5cbdb2f-540d-44ee-8856-61cfa61c025f)
@@ -90,25 +92,25 @@ FROM pizza_count pc
 ### 7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
 ``` SQL
 with change_table as (
-  SELECT
-    co.order_id,
-    co.customer_id,
-    co.pizza_id,
-    CASE
-      WHEN extras IS NULL AND exclusions IS NULL
-        THEN 'no' END AS no_changes,
-    CASE
-      WHEN extras IS NOT NULL or exclusions IS NOT NULL
-        THEN 'yes' END AS changes
-  FROM customer_orders2 co
-  JOIN runner_orders2 ro
-    ON ro.order_id = co.order_id
-  WHERE cancellation IS NULL
-	                	      )
+	SELECT
+		co.order_id,
+		co.customer_id,
+		co.pizza_id,
+		CASE
+			WHEN extras IS NULL AND exclusions IS NULL
+			 THEN 'no' END AS no_changes,
+		CASE
+			WHEN extras IS NOT NULL or exclusions IS NOT NULL
+			 THEN 'yes' END AS changes
+	FROM customer_orders2 co
+	JOIN runner_orders2 ro
+		ON ro.order_id = co.order_id
+	WHERE cancellation IS NULL
+               	      )
 SELECT
-  customer_id,
-  COUNT(changes) AS changes,
-  COUNT(no_changes) AS no_changes
+	customer_id,
+	COUNT(changes) AS changes,
+	COUNT(no_changes) AS no_changes
 FROM change_table
 GROUP BY 1;
 ```
@@ -119,15 +121,15 @@ GROUP BY 1;
 ### 8. How many pizzas were delivered that had both exclusions and extras?
 ``` SQL
 SELECT 
-  co.order_id, 
-  co.pizza_id, 
-  COUNT(co.pizza_id) AS 'exc_&_extra'
+	co.order_id, 
+	co.pizza_id, 
+	COUNT(co.pizza_id) AS 'exc_&_extra'
 FROM customer_orders2 co
 JOIN runner_orders2 ro 
 	ON ro.order_id = co.order_id
 WHERE cancellation IS NULL 
 	AND  extras IS NOT NULL 
-  AND exclusions IS NOT NULL 
+	AND exclusions IS NOT NULL 
 GROUP BY 1,2;
 ```
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/4498e431-89f6-462f-8c6d-4a67d386345f)
@@ -142,7 +144,7 @@ SELECT
           '-', 
           DATE_FORMAT(DATE_ADD(co.order_time, INTERVAL 1 HOUR), '%h %p')
 				 ) AS day_hours,
-  COUNT(co.pizza_id) AS volumes
+	 COUNT(co.pizza_id) AS volumes
 FROM customer_orders2 co
 GROUP BY 1
 ;
@@ -155,7 +157,7 @@ GROUP BY 1
 ``` SQL
 SELECT 
 	DAYNAME(co.order_time) AS days, 
-  COUNT(co.pizza_id) AS volumes
+	COUNT(co.pizza_id) AS volumes
 FROM customer_orders2 co
 GROUP BY 1;
 ```
@@ -170,92 +172,100 @@ GROUP BY 1;
 ### 1. How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)
 ```SQL
 WITH RECURSIVE WeekDates AS (
-  SELECT
-    CAST('2021-01-01' AS DATE) AS week_start,
-    CAST('2021-01-07' AS DATE) AS week_end
+	SELECT
+		CAST('2021-01-01' AS DATE) AS week_start,
+		CAST('2021-01-07' AS DATE) AS week_end
 UNION ALL
-  SELECT
-    DATE_ADD(week_start, INTERVAL 1 WEEK),
-    DATE_ADD(week_end, INTERVAL 1 WEEK)
-  FROM WeekDates
-  WHERE week_start < '2021-06-31'
+	SELECT
+		DATE_ADD(week_start, INTERVAL 1 WEEK),
+		DATE_ADD(week_end, INTERVAL 1 WEEK)
+	FROM WeekDates
+	WHERE week_start < '2021-06-31'
                 )
 SELECT
-  CONCAT(
-    DATE_FORMAT(week_start, '%d'),
-    '-',
-    DATE_FORMAT(week_end, '%d %Y')) AS Week,
-    COUNT(runner_id) AS Sign_ups
+	CONCAT(
+	    DATE_FORMAT(week_start, '%d'),
+	    '-',
+	    DATE_FORMAT(week_end, '%d %Y')) AS Week,
+	COUNT(runner_id) AS Sign_ups
 FROM WeekDates wd
 JOIN runners r
-  ON r.registration_date BETWEEN wd.week_start AND wd.week_end
+	ON r.registration_date BETWEEN wd.week_start AND wd.week_end
 GROUP BY 1;
 ```
-![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/6a818892-985a-48ce-a39a-b5bb2c0ed974)
+![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/361503fa-6b63-4422-9eb1-e2d7370274f2)
+
 
 <br/>
 
 ### 2. What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pickup the order?
 ```SQL
-SELECT distinct
-  ro.runner_id,
-  round(avg(
-          TIMESTAMPDIFF(MINUTE,co.order_time,ro.pickup_time)
-            )) AS avg_arriv_time
-FROM runner_orders2 ro
-JOIN customer_orders2 co
-  ON ro.order_id = co.order_id
-group by 1;
+with x as (
+	SELECT DISTINCT
+		ro.runner_id,
+        	ro.order_id,
+        	TIMESTAMPDIFF(MINUTE,co.order_time,ro.pickup_time) AS arriv_time
+	FROM runner_orders2 ro
+	JOIN customer_orders2 co 
+		ON ro.order_id = co.order_id
+    )
+SELECT 
+	x.runner_id, 
+    	Round(AVG(arriv_time)) as avg_arriv_time
+FROM x
+GROUP BY 1 ;
 
 -- Assuming the rider is called as soon as the order is placed
 ```
-![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/d64951d1-c68b-430a-a249-dfdec7c9071b)
+![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/657182fc-7caf-41a2-9d61-eb9ccf0ebf15)
+
 
 <br/>
 
 ### 3. Is there any relationship between the number of pizzas and how long the order takes to prepare?
 ```SQL
 with ab as (
-  SELECT
-    co.order_id,
-    COUNT(co.pizza_id) AS pizza_number,
-    TIMESTAMPDIFF(MINUTE, co.order_time, ro.pickup_time) AS time_dif
-  FROM customer_orders2 co
-  JOIN runner_orders2 ro
-    ON ro.order_id = co.order_id
-  WHERE cancellation is null
-  GROUP BY 1,3
+	SELECT
+		co.order_id,
+		COUNT(co.pizza_id) AS pizza_number,
+		TIMESTAMPDIFF(MINUTE, co.order_time, ro.pickup_time) AS time_dif
+	FROM customer_orders2 co
+	JOIN runner_orders2 ro
+		ON ro.order_id = co.order_id
+  	WHERE cancellation is null
+  	GROUP BY 1,3
               )
 SELECT
-  pizza_number,
-  round(avg(time_dif)) as avg_diff
+	pizza_number,
+	ROUND(AVG(time_dif)) as avg_diff
 FROM ab
 GROUP BY 1;
 -- Assuming the pick_up time is the same as the time the order is ready
 ```
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/626a56b0-a24d-4f4c-95d7-a9ad9b00cfe3)
 
+```
 Yes there seems to be a positive correlation between the number of pizza per order and the production time
-
+```
 <br/>
 
 ### 4. What was the average distance travelled for each customer?
 ```SQL
 WITH x AS (
-  SELECT DISTINCT
-    co.customer_id,
-    co.order_id, 
+	SELECT DISTINCT
+		co.customer_id,
+		co.order_id, 
 		ro.distance
-  FROM customer_orders2 co
-  JOIN runner_orders2 ro
-    ON co.order_id = ro.order_id
+  	FROM customer_orders2 co
+  	JOIN runner_orders2 ro
+    		ON co.order_id = ro.order_id
 	WHERE ro.distance IS NOT NULL
           )
 SELECT
-  x.customer_id,
-  ROUND(
-    AVG(x.distance),
-    2)
+	x.customer_id,
+	ROUND(
+	 AVG(x.distance),
+	 2)
 FROM x
 GROUP BY 1;
 ```
@@ -276,42 +286,45 @@ FROM runner_orders2 ro;
 ### 6. What was the average speed for each runner for each delivery and do you notice any trend for these values?
 ```SQL
 WITH x as (
-  SELECT DISTINCT
-    runner_id,
-    order_id,
-    (ro.duration/60) as duration_hr,
-    (ro.distance) as distance,
-    ROW_NUMBER() OVER (PARTITION BY x.runner_id, x.order_id) AS rn
-  FROM runner_orders2 ro
-  WHERE cancellation is null
+	SELECT DISTINCT
+		runner_id,
+		order_id,
+		(ro.duration/60) as duration_hr,
+		(ro.distance) as distance,
+		ROW_NUMBER() OVER (PARTITION BY x.runner_id, x.order_id) AS rn
+	FROM runner_orders2 ro
+  	WHERE cancellation is null
             )
 SELECT
-  x.runner_id,
-  x.order_id,
-  ROUND(
-    AVG(x.distance/x.duration_hr),
-    2) AS avg_speed_Kph
+	x.runner_id,
+  	x.order_id,
+  	ROUND(
+    	 AVG(x.distance/x.duration_hr),
+    	 2) AS avg_speed_Kph
 FROM x
 GROUP BY 1,2;
 ```
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/67a8602d-7fb6-46f4-85d2-39c92c5b21f8)
 
+```
 Yes as runners get more experienced, the tend to increase in avg speed. And runner 2's 2nd run should be investigated 
-
+```
 <br/>
 
 ### 7. What is the successful delivery percentage for each runner?
 ```SQL
 SELECT
-  ro.runner_id,
-  ROUND(
-    (COUNT(CASE
-            WHEN ro.cancellation IS NULL THEN 1 END)
-     / count(*))
-    * 100) AS percentage_dev_success
+  	ro.runner_id,
+  	ROUND(
+	 (COUNT(CASE
+			WHEN ro.cancellation IS NULL THEN 1 END)
+	  / count(*))
+    	 * 100) AS percentage_dev_success
 FROM runner_orders2 ro
 GROUP BY 1;
 ```
+![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/9265479c-353b-43e6-90e9-630003383bc4)
+
 
 <br/>
 
@@ -322,30 +335,30 @@ GROUP BY 1;
 ### 1. What are the standard ingredients for each pizza?
 ```SQL
 WITH RECURSIVE AB AS(
-  SELECT
-    pr.pizza_id,
-    pr.toppings AS topping,
-    REGEXP_SUBSTR(pr.toppings,'[0-9]+', 1, 1) AS ingredient,
-    1 AS pos
-  FROM pizza_runner.pizza_recipes pr 
+  	SELECT
+		pr.pizza_id,
+		pr.toppings AS topping,
+		REGEXP_SUBSTR(pr.toppings,'[0-9]+', 1, 1) AS ingredient,
+		1 AS pos
+  	FROM pizza_runner.pizza_recipes pr 
 UNION ALL
-  SELECT
-    AB.pizza_id,
-    AB.topping,
-    REGEXP_SUBSTR(AB.topping,'[0-9]+', 1, AB.pos + 1),
-    AB.pos +1
-  FROM AB
-  WHERE REGEXP_SUBSTR(AB.topping,'[0-9]+', 1, AB.pos + 1) is not null
+  	SELECT
+		AB.pizza_id,
+		AB.topping,
+		REGEXP_SUBSTR(AB.topping,'[0-9]+', 1, AB.pos + 1),
+		AB.pos +1
+  	FROM AB
+  	WHERE REGEXP_SUBSTR(AB.topping,'[0-9]+', 1, AB.pos + 1) is not null
 	)
 -- This table extracts and liststhe individual topping ids from the the toppings column in the pizza_recipes table
 SELECT
-  pn.pizza_name,
-  group_concat(' ', pt.topping_name) AS ingredients
+	pn.pizza_name,
+	group_concat(' ', pt.topping_name) AS ingredients
 FROM AB
 LEFT JOIN pizza_toppings pt
-  ON pt.topping_id = ingredient
+	ON pt.topping_id = ingredient
 JOIN pizza_names pn
-  ON pn.pizza_id = ab.pizza_id
+	ON pn.pizza_id = ab.pizza_id
 GROUP BY 1
 -- Macthes the listed topping values to the topping name in tha pizza_topping table then aggregates it into one row for each pizza type;
 ```
@@ -356,8 +369,8 @@ GROUP BY 1
 ### 2. What was the most commonly added extra?
 ```SQL
 SELECT
-  ex.extra_name,
-  COUNT(ex.extra) as number_ordered
+	ex.extra_name,
+	COUNT(ex.extra) as number_ordered
 FROM extras ex
 WHERE ex.extra_name IS NOT NULL
 GROUP BY 1
@@ -371,8 +384,8 @@ GROUP BY 1
 ### 3. What was the most common exclusion?
 ```SQL
 SELECT
-  exc.exclusion_name,
-  COUNT(exc.excluded) as number_excluded
+	exc.exclusion_name,
+ 	COUNT(exc.excluded) as number_excluded
 FROM exclusions exc
 WHERE exc.exclusion_name IS NOT NULL
 GROUP BY 1;
@@ -390,29 +403,29 @@ Meat Lovers - Extra Bacon
 Meat Lovers - Exclude Cheese, Bacon - Extra Mushroom, Peppers
 ```sql
 WITH orders_inc_names AS (
-  SELECT
-    co.order_id,
-    co.new_id,
-    pn.pizza_name,
-    CASE
-      WHEN GROUP_CONCAT( DISTINCT ex.extra_name) IS NOT NULL
-        THEN CONCAT_WS(': ','Extra', GROUP_CONCAT( distinct ex.extra_name))
-        ELSE null END AS extra,
-    CASE
-      WHEN GROUP_CONCAT( DISTINCT ec.exclusion_name) IS NOT NULL
-        THEN CONCAT_WS(': ','Exclude', GROUP_CONCAT( DISTINCT ec.exclusion_name))
-        ELSE null END AS exclude
-  FROM customer_orders2 co
-  JOIN extras ex
-    ON co.new_id = ex.new_id
-  JOIN exclusions ec
-    ON co.new_id = ec.new_id
-  JOIN pizza_names pn
-    ON pn.pizza_id = co.pizza_id
-  GROUP BY 1,2,3
+  	SELECT
+    		co.order_id,
+    		co.new_id,
+    		pn.pizza_name,
+    		CASE
+      			WHEN GROUP_CONCAT( DISTINCT ex.extra_name) IS NOT NULL
+        		 THEN CONCAT_WS(': ','Extra', GROUP_CONCAT( distinct ex.extra_name))
+			ELSE null END AS extra,
+    		CASE
+      			WHEN GROUP_CONCAT( DISTINCT ec.exclusion_name) IS NOT NULL
+        		THEN CONCAT_WS(': ','Exclude', GROUP_CONCAT( DISTINCT ec.exclusion_name))
+        		ELSE null END AS exclude
+	FROM customer_orders2 co
+  	JOIN extras ex
+    		ON co.new_id = ex.new_id
+  	JOIN exclusions ec
+    		ON co.new_id = ec.new_id
+  	JOIN pizza_names pn
+    		ON pn.pizza_id = co.pizza_id
+  	GROUP BY 1,2,3
                       )
 SELECT
-  CONCAT_WS(' - ', oic.pizza_name, extra, exclude) AS Order_details
+  	CONCAT_WS(' - ', oic.pizza_name, extra, exclude) AS Order_details
 FROM orders_inc_names oic;
 ```
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/4bfe9892-b2be-4a58-868b-924bacf9838b)
@@ -431,13 +444,13 @@ COMING SOON!
 ### 1. If a Meat Lovers pizza costs $12 and Vegetarian costs $10 and there were no charges for changes - how much money has Pizza Runner made so far if there are no delivery fees?
 ```SQL
 SELECT
-  SUM(CASE
-        WHEN co.pizza_id = 1
-        THEN 12 ELSE 10 END
-        ) as revenue
+  	SUM(CASE
+        	WHEN co.pizza_id = 1
+        	 THEN 12 ELSE 10 END
+         ) as revenue
 FROM customer_orders2 co
 LEFT JOIN runner_orders2 ro
-  ON ro.order_id = co.order_id
+  	ON ro.order_id = co.order_id
 WHERE ro.cancellation IS NULL;
 ```
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/e7d81e83-e85e-44f3-8ff0-7f4f6bf6a4ab)
@@ -458,15 +471,15 @@ WITH rev_sum AS(
 	LEFT JOIN runner_orders2 ro 
 		ON ro.order_id = co.order_id
 	WHERE ro.cancellation IS NULL
-    GROUP BY 1
+    	GROUP BY 1
 		)
 -- Calculates Total Revenue,
 rev_extra AS(
 	SELECT
-			1 AS total,    
-			SUM( CASE
-				WHEN ex.extra IS NOT NULL THEN 1
-				END) AS extra_revenue
+		1 AS total,    
+		SUM(CASE
+			WHEN ex.extra IS NOT NULL THEN 1
+		     END) AS extra_revenue
 	FROM customer_orders2 co
 	LEFT JOIN extras ex
 		ON ex.new_id = co.new_id
@@ -485,4 +498,95 @@ JOIN rev_sum rs
 ;
 ```
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/afe9dcbd-5347-423c-9842-e67c9b421aed)
+
+<br/>
+
+### The Pizza Runner team now wants to add an additional ratings system that allows customers to rate their runner, how would you design an additional table for this new dataset - generate a schema for this new table and insert your own data for ratings for each successful customer order between 1 to 5.
+
+``` SQL
+CREATE TABLE customer_ratings (
+	order_id int,
+	customer_id int,
+	runner_id int,
+	ratings int
+) ;
+
+insert into customer_ratings
+SELECT DISTINCT
+	co.order_id,
+	co.customer_id,
+	ro.runner_id,
+	CASE
+		WHEN ro.distance/(ro.duration/60) <= 25 THEN 1
+		WHEN ro.distance/(ro.duration/60) <= 30 THEN 2
+		WHEN ro.distance/(ro.duration/60) <= 40 THEN 3
+		WHEN ro.distance/(ro.duration/60) <= 50 THEN 4
+		WHEN ro.distance/(ro.duration/60) > 55  THEN 5
+		END
+FROM runner_orders2  ro
+JOIN customer_orders2 co
+	ON ro.order_id = co.order_id;
+```
+![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/f9cbd699-636d-4457-925a-73548e173116)
+
+<br/>
+
+### Using your newly generated table - can you join all of the information together to form a table which has the following information for successful deliveries?
+```
+customer_id
+order_id
+runner_id
+rating
+order_time
+pickup_time
+Time between order and pickup
+Delivery duration
+Average speed
+Total number of pizzas
+```
+``` SQL
+SELECT 
+	co.customer_id,
+    	co.order_id,
+    	ro.runner_id,
+    	cr.ratings, 
+	co.order_time, 
+	ro.pickup_time,
+    	TIMESTAMPDIFF(MINUTE, co.order_time, ro.pickup_time) AS time_till_pickup,
+    	duration AS `mins`,
+	ROUND(ro.distance/(ro.duration/60)) AS `speed_km/h`,
+	COUNT(co.pizza_id) as count
+FROM customer_orders2 co
+JOIN runner_orders2 ro
+	ON ro.order_id = co.order_id 
+LEFT JOIN customer_ratings cr 
+	ON ro.order_id = cr.order_id
+GROUP BY 1,2,3,4,5,6,7,8,9
+;
+```
+![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/2b1ac5b8-c3c0-4c84-b84e-f17ed6168df9)
+
+<br/>
+
+### If a Meat Lovers pizza was $12 and Vegetarian $10 fixed prices with no cost for extras and each runner is paid $0.30 per kilometre traveled - how much money does Pizza Runner have left over after these deliveries?
+```SQL
+WITH cost AS(
+	SELECT 
+		ro.order_id,
+        	pizza_id,
+        	CASE
+			WHEN co.pizza_id = 1 THEN 12
+			ELSE 10 END AS price,
+		 CASE
+			WHEN LEAD(ro.order_id) OVER(PARTITION BY ro.order_id) = ro.order_id THEN NULL 
+            		ELSE ROUND(.3 * distance) END AS cost
+	FROM customer_orders2 co
+	LEFT JOIN runner_orders2 ro 
+		ON ro.order_id = co.order_id
+	WHERE ro.cancellation IS NULL
+    )
+select sum(price)+sum(cost) AS profit
+from cost ;
+```
+![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/acbc7b77-8fc9-4814-a492-c68df3d1e760)
 
