@@ -54,6 +54,8 @@ ALTER table runner_orders2
       MODIFY COLUMN pickup_time Timestamp,
       MODIFY COLUMN  cancellation Varchar(500) ;             
 ```
+***Result***
+
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/5a5aaf67-3510-4418-b4d7-fc99756064dc)
 
 
@@ -110,6 +112,7 @@ ALTER TABLE customer_orders2
       MODIFY COLUMN extras VARCHAR (50),
       MODIFY COLUMN order_time TIMESTAMP;
 ```
+***Result***
 
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/4e27bb50-ef3e-489b-b845-f985048cb235)
 
@@ -160,6 +163,8 @@ JOIN pizza_toppings pt
 -- This joins the results from the CTE with the pizza_toppings table to get the names of each ingrediets
 -- And then inserts it into the temporary table topping.
 ```
+***Result***
+
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/41a72f4d-e9fc-4dea-ae3b-431be6d37ee1)
 
 
@@ -216,6 +221,8 @@ JOIN pizza_toppings pt
 -- And then inserts it into the temporary table extras.
 
 ```
+***Result***
+
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/cbba4a8c-7b43-4d34-a75d-a420d1349c5c)
 
 3. Exclusions
@@ -268,6 +275,8 @@ JOIN pizza_toppings pt
 -- This joins the results from the CTE with the pizza_toppings table to get the names of each ingrediets
 -- And then inserts it into the temporary table exclusions.
 ```
+***Result***
+
 ![image](https://github.com/Jx-jeff/8-Week-SQL-Challenge/assets/131775252/ccb5ef42-3686-479a-b3fa-923e4ac553a4)
 
 
