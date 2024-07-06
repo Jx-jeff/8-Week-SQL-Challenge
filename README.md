@@ -15,7 +15,7 @@ Thanks 😊😉
 
 [Week 1](https://github.com/Jx-jeff/8-Week-SQL-Challenge/tree/d71e37809267fb2aa40ae9ff2f50128d7fec579d/Case_1_Danny's_Diner)
 
-[Week 2]
+[Week 2](https://github.com/Jx-jeff/8-Week-SQL-Challenge/tree/facf5555855f4b9c70d45fe0936c5d64e3e910f0/Case_2%20Pizza%20Runner)
 
 
 ## Acknowledgements
